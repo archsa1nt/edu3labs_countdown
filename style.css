@@ -1,4 +1,4 @@
-@layer demo, countdown;
+@layer demo, countdown, alpha;
 
 @layer countdown{
   .countdown {
@@ -17,8 +17,8 @@
     display: grid;
     place-items: center;
     border-radius: 50%;
-    border: 1px solid hsl(0 0% 50% / .5);
-    font-size: 1.5rem;
+    border: 5px solid hsl(0 0% 50% / .15);
+    font-size: 5.5rem;
     position: relative
   }
   .countdown > .part.days { --num: 365 }
@@ -33,14 +33,15 @@
     --degree: calc(360deg / var(--num) * (var(--num) - var(--value,0)));
     background-image: conic-gradient(var(--accent) var(--degree), transparent calc(var(--degree) + 0.1deg));
 
-    --border-size: 4px;  
-    --mask-image: radial-gradient(100% 100%, transparent calc(50% - var(--border-size)), black calc(50% - var(--border-size) + 1px));
+    --border-size: 10px;  
+    --mask-image: radial-gradient(100% 100%, transparent calc(50% - var(--border-size)), black calc(50% - var(--border-size) + 2px));
     -webkit-mask-image: var(--mask-image);
     mask-image: var(--mask-image);
   }
   .countdown > .part > .text {
     text-align: center;
-    opacity: 0.75
+    opacity: 0.75;
+    font-size: 40px;
   }
 }
 @layer demo {
@@ -54,4 +55,20 @@
   h2 {
     margin-top: 4rem;
   }
+}
+@layer alpha{
+    .alpha > .part > .number {
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid hsl(0 0% 50% / .5);
+    font-size: 8rem;
+    position: relative
+  }
+ .alpha > .part > .text {
+    text-align: center;
+    opacity: 0.75;
+   font-size: 60px
+}
 }

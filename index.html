@@ -8,13 +8,21 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
- <h1 Style=font-size:80px;color:#FF5722>Edu3Labs</h1>
-<h2>Alpha Testnet</h2>
-<time class="countdown" date-time="2023-05-31 08:00:00" style="--accent: red"></time>
-<h2>Beta Mainnet</h2>
-<time class="countdown" date-time="2023-06-14 08:00:00" style="--accent: yellow"></time>
-<h2>Prodution Mainnet</h2>
-<time class="countdown" date-time="2023-07-05 08:00:00" style="--accent: green"></time>
+    <div style="text-align: center;">
+        <h1 style="font-size: 80px; color: #FF5722;">Edu3Labs</h1>
+        <h2 style="font-size: 48px;">Alpha Testnet</h2>
+        <time class="countdown alpha" date-time="2023-05-31 08:00:00" style="--accent: red"></time>
+      </div>
+      <div style="display: flex; justify-content: space-around; margin-top: 50px;">
+        <div style="text-align: center;">
+          <h3 style="font-size: 24px;">Beta Mainnet</h3>
+          <time class="countdown" date-time="2023-06-14 08:00:00" style="--accent: yellow"></time>
+        </div>
+        <div style="text-align: center;">
+          <h3 style="font-size: 24px;">Production Mainnet</h3>
+          <time class="countdown" date-time="2023-07-05 08:00:00" style="--accent: green"></time>
+        </div>
+      </div>
 <script src="./app.js"></script>
 </body>
 </html>
