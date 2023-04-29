@@ -1,4 +1,4 @@
-@layer demo, countdown, alpha;
+@layer demo, countdown, alpha, countDowngroup;
 
 @layer countdown{
   .countdown {
@@ -8,6 +8,8 @@
     grid-auto-columns: 1fr;
     gap: 1rem;
   }
+
+  
   .countdown > .part {
     display: grid;
     gap: 0.5rem;
@@ -43,6 +45,46 @@
     opacity: 0.75;
     font-size: 40px;
   }
+
+  @media screen and (max-width: 600px) {
+    .countdown {
+        width: 100%;
+
+      }
+      .countdown > .part {  
+        gap: 0.5rem;
+      }
+      .countdown > .part > .number {
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        border: 1px solid hsl(0 0% 50% / .15);
+        font-size: 1rem;
+        position: relative
+      }
+      .countdown > .part > .text {
+        text-align: center;
+        opacity: 0.75;
+        font-size: .8rem;
+      }
+      .countdown > .part > .number::after{
+        content: "";
+        position: absolute;
+        inset: calc(var(--border-size) * -0.5);
+        border-radius: inherit;
+    
+        --degree: calc(360deg / var(--num) * (var(--num) - var(--value,0)));
+        background-image: conic-gradient(var(--accent) var(--degree), transparent calc(var(--degree) + 0.1deg));
+    
+        --border-size: 6px;  
+        --mask-image: radial-gradient(100% 100%, transparent calc(50% - var(--border-size)), black calc(50% - var(--border-size) + 2px));
+        -webkit-mask-image: var(--mask-image);
+        mask-image: var(--mask-image);
+      }
+
+    
+}
 }
 @layer demo {
   * { box-sizing: border-box }
@@ -55,6 +97,18 @@
   h2 {
     margin-top: 4rem;
   }
+  @media screen and (max-width: 600px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    h2 {
+      margin-top: 4rem;
+    }
+      
+    }
 }
 @layer alpha{
     .alpha > .part > .number {
@@ -70,5 +124,56 @@
     text-align: center;
     opacity: 0.75;
    font-size: 60px
+   
 }
+.alpha > .part > .number::after{
+  content: "";
+  position: absolute;
+  inset: calc(var(--border-size) * -0.5);
+  border-radius: inherit;
+
+  --degree: calc(360deg / var(--num) * (var(--num) - var(--value,0)));
+  background-image: conic-gradient(var(--accent) var(--degree), transparent calc(var(--degree) + 0.1deg));
+
+  --border-size: 10px;  
+  --mask-image: radial-gradient(100% 100%, transparent calc(50% - var(--border-size)), black calc(50% - var(--border-size) + 2px));
+  -webkit-mask-image: var(--mask-image);
+  mask-image: var(--mask-image);
+}
+@media screen and (max-width: 600px) {
+    .alpha > .part > .number {
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        border: 1px solid hsl(0 0% 50% / .5);
+        font-size: 2rem;
+        position: relative
+      }
+     .alpha > .part > .text {
+        text-align: center;
+        opacity: 0.75;
+       font-size: 1rem
+      
+    }
+}
+}
+@layer countDowngroup{
+  /* style="display: flex; justify-content: space-around; margin-top: 50px;" */
+  .countDowngroup{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+
+  }
+ 
+@media screen and (max-width: 600px) {
+     .countDowngroup{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 50px;
+    
+  }
+  }
 }
